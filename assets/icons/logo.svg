@@ -1,0 +1,68 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 64 64"
+    role="img"
+    aria-label="NEXORA"
+>
+    <g
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <!-- Outer broken frame -->
+        <path
+            d="M18 10H10V24"
+            stroke="#FFFFFF"
+            stroke-width="3.5"
+        />
+
+        <path
+            d="M46 10H54V24"
+            stroke="#FFFFFF"
+            stroke-width="3.5"
+        />
+
+        <path
+            d="M18 54H10V40"
+            stroke="#FFFFFF"
+            stroke-width="3.5"
+        />
+
+        <path
+            d="M46 54H54V40"
+            stroke="#FFFFFF"
+            stroke-width="3.5"
+        />
+
+        <!-- Main N -->
+        <path
+            d="M19 44V20L45 44V20"
+            stroke="#FFFFFF"
+            stroke-width="6"
+        />
+
+        <!-- Offset accent -->
+        <path
+            d="M19 20L45 44"
+            stroke="#FF5C00"
+            stroke-width="2.5"
+        />
+
+        <!-- Accent points -->
+        <circle
+            cx="19"
+            cy="20"
+            r="3.2"
+            fill="#FFD900"
+            stroke="none"
+        />
+
+        <circle
+            cx="45"
+            cy="44"
+            r="3.2"
+            fill="#FF5C00"
+            stroke="none"
+        />
+    </g>
+</svg>
