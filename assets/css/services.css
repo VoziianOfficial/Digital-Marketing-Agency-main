@@ -997,6 +997,28 @@
     color: var(--color-gray-400);
 }
 
+.section-heading--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: fit-content;
+}
+
+.section-heading--center .section-label,
+.section-heading--center .section-title,
+.section-heading--center > p {
+    flex: 0 0 auto;
+}
+
+.section-heading--center .section-title {
+    text-wrap: balance;
+}
+
+.section-heading--center > p {
+    text-wrap: balance;
+}
+
 .service-capabilities-swiper {
     margin-top: 42px;
 
@@ -1428,7 +1450,7 @@
 }
 
 .seo-diagnostic__heading .round-link {
-    margin-top: 31px;
+    margin-top: 22px;
 }
 
 .seo-diagnostic__board {
@@ -4150,6 +4172,7 @@
     display: grid;
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
+    align-items: stretch;
     gap: 14px;
 
     margin-top: 42px;
@@ -4161,7 +4184,7 @@
     display: flex;
     flex-direction: column;
 
-    min-height: 280px;
+    height: 100%;
     padding: 23px;
 
     overflow: hidden;
@@ -5225,10 +5248,6 @@
             repeat(2, minmax(0, 1fr));
     }
 
-    .service-process-card {
-        min-height: 220px;
-    }
-
     .performance-flow__shell {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
@@ -5523,10 +5542,6 @@
 
     .service-process__track {
         grid-template-columns: 1fr;
-    }
-
-    .service-process-card {
-        min-height: 195px;
     }
 
     .service-feature {
@@ -5925,7 +5940,6 @@
     }
 
     .service-process-card {
-        min-height: 180px;
         padding: 19px;
     }
 
