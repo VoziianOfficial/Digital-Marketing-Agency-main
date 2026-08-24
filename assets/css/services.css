@@ -88,6 +88,9 @@
     z-index: 3;
 
     min-width: 0;
+
+    transform:
+        translateX(clamp(18px, 2.6vw, 48px));
 }
 
 .service-hero__meta {
@@ -123,7 +126,7 @@
     max-width: 960px;
 
     font-family: var(--font-primary);
-    font-size: clamp(70px, 7.6vw, 126px);
+    font-size: clamp(64px, 6.9vw, 112px);
     font-weight: 800;
     line-height: 0.84;
     letter-spacing: -0.075em;
@@ -142,6 +145,8 @@
 
 .service-hero__title-mask > span {
     display: block;
+
+    white-space: nowrap;
 
     transform: translateY(112%);
 
@@ -203,7 +208,7 @@
 }
 
 .service-hero__bottom p {
-    max-width: 460px;
+    max-width: 560px;
 
     color: var(--color-gray-400);
 
@@ -1025,12 +1030,18 @@
     overflow: hidden;
 }
 
+.service-capabilities-swiper
+.swiper-wrapper {
+    align-items: stretch;
+}
+
 .capability-card {
     display: flex;
     flex-direction: column;
 
-    min-height: 350px;
-    padding: 25px;
+    height: auto;
+    min-height: 0;
+    padding: 20px;
 
     color: var(--color-white);
     background: var(--color-dark);
@@ -1061,7 +1072,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 12px;
 }
 
 .capability-card__symbol {
@@ -1070,16 +1081,16 @@
     display: grid;
     place-items: center;
 
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
 
     background: var(--service-accent);
     border-radius: 50%;
 }
 
 .capability-card__symbol i {
-    width: 19px;
-    height: 19px;
+    width: 16px;
+    height: 16px;
 
     border:
         2px solid
@@ -1089,7 +1100,7 @@
 }
 
 .capability-card__tag {
-    padding: 6px 9px;
+    padding: 5px 8px;
 
     color: var(--color-black);
     background: var(--service-accent-secondary);
@@ -1103,25 +1114,25 @@
 }
 
 .capability-card h3 {
-    margin-top: auto;
+    margin-top: 34px;
 
-    font-size: clamp(25px, 2vw, 32px);
+    font-size: clamp(22px, 1.7vw, 27px);
     font-weight: 800;
     letter-spacing: -0.045em;
 }
 
 .capability-card p {
-    margin-top: 12px;
+    margin-top: 9px;
 
     color: var(--color-gray-400);
 
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .capability-card__footer {
-    margin-top: 21px;
-    padding-top: 14px;
+    margin-top: auto;
+    padding-top: 12px;
 
     color: var(--color-gray-500);
     border-top:
@@ -1129,7 +1140,7 @@
         rgba(255, 255, 255, 0.1);
 
     font-family: var(--font-accent);
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     letter-spacing: 0.05em;
 }
@@ -4470,7 +4481,7 @@
 
     .service-hero__title {
         font-size:
-            clamp(62px, 7.4vw, 102px);
+            clamp(58px, 6.8vw, 92px);
     }
 
     .service-hero__visual {
@@ -4520,7 +4531,7 @@
 
     .service-hero__title {
         font-size:
-            clamp(58px, 7.7vw, 84px);
+            clamp(54px, 7vw, 78px);
     }
 
     .service-hero__visual {
@@ -4621,13 +4632,15 @@
 
     .service-hero__content {
         max-width: 800px;
+
+        transform: none;
     }
 
     .service-hero__title {
         max-width: 900px;
 
         font-size:
-            clamp(63px, 11vw, 96px);
+            clamp(58px, 10vw, 86px);
     }
 
     .service-hero__bottom {
@@ -4761,7 +4774,7 @@
 
     .service-hero__title {
         font-size:
-            clamp(51px, 13vw, 79px);
+            clamp(48px, 12vw, 72px);
     }
 
     .service-hero__bottom {
@@ -4910,7 +4923,7 @@
 
     .service-hero__title {
         font-size:
-            clamp(44px, 13.5vw, 67px);
+            clamp(41px, 12.4vw, 60px);
         line-height: 0.9;
         letter-spacing: -0.065em;
     }
@@ -4922,7 +4935,7 @@
     .page--web-design
     .service-hero__title {
         font-size:
-            clamp(38px, 11.8vw, 58px);
+            clamp(36px, 10.7vw, 52px);
     }
 
     .service-hero__bottom p {
@@ -5118,13 +5131,12 @@
     }
 
     .capability-card {
-        min-height: 320px;
-        padding: 21px;
+        padding: 18px;
     }
 
     .capability-card__symbol {
-        width: 47px;
-        height: 47px;
+        width: 42px;
+        height: 42px;
     }
 
     .service-capabilities__controls {
@@ -5356,13 +5368,13 @@
 
     .service-hero__title {
         font-size:
-            clamp(39px, 13vw, 51px);
+            clamp(36px, 11.8vw, 46px);
     }
 
     .page--web-design
     .service-hero__title {
         font-size:
-            clamp(34px, 10.8vw, 45px);
+            clamp(32px, 9.8vw, 40px);
     }
 
     .service-hero__visual {
