@@ -18,6 +18,49 @@
         Array.from(scope.querySelectorAll(selector));
 
 
+    function ensureLoopSlides(
+        element,
+        slideSelector,
+        minSlides = 12
+    ) {
+        const wrapper = qs(
+            ".swiper-wrapper",
+            element
+        );
+
+        if (!wrapper) {
+            return 0;
+        }
+
+        const originalSlides = qsa(
+            slideSelector,
+            wrapper
+        ).filter((slide) => {
+            return !slide.dataset.loopSourceClone;
+        });
+
+        if (originalSlides.length < 2) {
+            return originalSlides.length;
+        }
+
+        while (
+            qsa(slideSelector, wrapper).length <
+            minSlides
+        ) {
+            originalSlides.forEach((slide) => {
+                const clone = slide.cloneNode(true);
+
+                clone.dataset.loopSourceClone = "true";
+                clone.setAttribute("aria-hidden", "true");
+
+                wrapper.appendChild(clone);
+            });
+        }
+
+        return qsa(slideSelector, wrapper).length;
+    }
+
+
     const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -70,6 +113,11 @@
 
 
         sliders.forEach((element) => {
+            ensureLoopSlides(
+                element,
+                ".capability-card",
+                12
+            );
 
             const section = element.closest(
                 ".service-capabilities"
@@ -211,6 +259,11 @@
 
 
         sliders.forEach((element) => {
+            ensureLoopSlides(
+                element,
+                ".related-service-card",
+                12
+            );
 
             const section = element.closest(
                 ".related-services"
