@@ -538,6 +538,8 @@
 
     width: max-content;
 
+    will-change: transform;
+
     animation:
         serviceMarquee
         26s
@@ -548,10 +550,15 @@
 .service-marquee__group {
     display: flex;
     align-items: center;
+    justify-content: space-around;
 
-    flex-shrink: 0;
+    flex: 0 0 auto;
 
+    width: max-content;
+    min-width: 100vw;
     height: 58px;
+
+    white-space: nowrap;
 }
 
 .service-marquee__group span {
@@ -582,8 +589,12 @@
 }
 
 @keyframes serviceMarquee {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
     to {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
@@ -3700,6 +3711,7 @@
     gap: 19px;
 
     margin-top: 28px;
+    margin-bottom: 22px;
 }
 
 .content-flow-plan li {
@@ -5693,6 +5705,7 @@
     .content-flow-plan ul {
         gap: 14px;
         margin-top: 20px;
+        margin-bottom: 0;
     }
 
     .content-flow-plan a {
