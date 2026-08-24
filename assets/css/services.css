@@ -2380,9 +2380,11 @@
 }
 
 .performance-flow__card {
+    position: relative;
+
     height: fit-content;
     min-height: 0;
-    padding: 18px;
+    padding: 15px 58px 14px 15px;
 
     background: var(--color-white);
     border:
@@ -2420,11 +2422,15 @@
 }
 
 .performance-flow__icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
     display: grid;
     place-items: center;
 
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
 
     background: var(--color-orange);
     border-radius: 50%;
@@ -2446,14 +2452,14 @@
 }
 
 .performance-flow__icon svg {
-    width: 19px;
-    height: 19px;
+    width: 16px;
+    height: 16px;
 }
 
 .performance-flow__card small {
     display: block;
 
-    margin-top: 18px;
+    margin-top: 0;
 
     color: var(--color-gray-500);
 
@@ -2465,20 +2471,20 @@
 }
 
 .performance-flow__card h3 {
-    margin-top: 4px;
+    margin-top: 5px;
 
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 800;
     letter-spacing: -0.04em;
 }
 
 .performance-flow__card p {
-    margin-top: 8px;
+    margin-top: 6px;
 
     color: var(--color-gray-600);
 
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 11.5px;
+    line-height: 1.45;
 }
 
 .performance-flow__link {
@@ -3015,6 +3021,39 @@
 
     font-size: 12px;
     line-height: 1.6;
+}
+
+.content-pillar-card__button {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    margin-top: 24px;
+    padding: 11px 18px;
+
+    color: var(--color-white);
+    background: var(--service-accent);
+    border-radius: 6px 15px 15px 13px;
+
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        transform var(--transition-base);
+}
+
+.content-pillar-card__button:hover {
+    color: var(--color-black);
+    background: var(--service-accent-secondary);
+    transform: translateY(-2px);
 }
 
 .content-pillar-card__visual--lines {
