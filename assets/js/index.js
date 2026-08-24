@@ -40,6 +40,7 @@
         initTestimonialsSlider();
 
         initFaqAccordion();
+        initServiceAccordion();
         initMediaParallax();
 
         initTrustedTabs();
@@ -1046,6 +1047,352 @@
             "transitionend",
             onTransitionEnd
         );
+    }
+
+
+    /* =====================================================
+       SERVICE ACCORDION
+       ===================================================== */
+
+    function initServiceAccordion() {
+        const accordion = qs(
+            "[data-service-accordion]"
+        );
+
+        if (!accordion) {
+            return;
+        }
+
+
+        const items = qsa(
+            ".service-accordion__item",
+            accordion
+        );
+
+
+        if (!items.length) {
+            return;
+        }
+
+
+        items.forEach((item, index) => {
+            const trigger = qs(
+                ".service-accordion__trigger",
+                item
+            );
+
+            const panel = qs(
+                ".service-accordion__panel",
+                item
+            );
+
+
+            if (!trigger || !panel) {
+                return;
+            }
+
+
+            const isActive =
+                item.classList.contains(
+                    "is-active"
+                );
+
+
+            trigger.setAttribute(
+                "aria-expanded",
+                isActive
+                    ? "true"
+                    : "false"
+            );
+
+            panel.hidden = !isActive;
+
+
+            if (
+                !isActive &&
+                index === 0 &&
+                !items.some((serviceItem) =>
+                    serviceItem.classList.contains(
+                        "is-active"
+                    )
+                )
+            ) {
+                openServiceItem(
+                    item,
+                    false
+                );
+            }
+
+
+            trigger.addEventListener(
+                "click",
+                () => {
+                    if (
+                        item.classList.contains(
+                            "is-active"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    items.forEach(
+                        (otherItem) => {
+                            if (
+                                otherItem !== item &&
+                                otherItem.classList.contains(
+                                    "is-active"
+                                )
+                            ) {
+                                closeServiceItem(
+                                    otherItem
+                                );
+                            }
+                        }
+                    );
+
+
+                    openServiceItem(item);
+                }
+            );
+        });
+    }
+
+
+    function clearServicePanelTransition(panel) {
+        if (panel._serviceAccordionTimer) {
+            window.clearTimeout(
+                panel._serviceAccordionTimer
+            );
+
+            panel._serviceAccordionTimer = null;
+        }
+
+        if (panel._serviceAccordionEnd) {
+            panel.removeEventListener(
+                "transitionend",
+                panel._serviceAccordionEnd
+            );
+
+            panel._serviceAccordionEnd = null;
+        }
+    }
+
+
+    function openServiceItem(
+        item,
+        animate = true
+    ) {
+        const trigger = qs(
+            ".service-accordion__trigger",
+            item
+        );
+
+        const panel = qs(
+            ".service-accordion__panel",
+            item
+        );
+
+
+        if (!trigger || !panel) {
+            return;
+        }
+
+
+        clearServicePanelTransition(panel);
+
+        item.classList.add(
+            "is-active"
+        );
+
+        trigger.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        panel.hidden = false;
+
+
+        if (
+            prefersReducedMotion ||
+            !animate
+        ) {
+            panel.style.height = "auto";
+            panel.style.overflow = "";
+            panel.style.transition = "";
+
+            return;
+        }
+
+
+        panel.style.height = "0px";
+        panel.style.overflow = "hidden";
+        panel.style.transition =
+            "height 460ms " +
+            "cubic-bezier(0.22, 1, 0.36, 1)";
+
+
+        const targetHeight =
+            panel.scrollHeight;
+
+
+        window.requestAnimationFrame(
+            () => {
+                panel.style.height =
+                    `${targetHeight}px`;
+            }
+        );
+
+
+        panel._serviceAccordionEnd = (
+            event
+        ) => {
+            if (
+                event.propertyName !==
+                "height"
+            ) {
+                return;
+            }
+
+            panel.style.height = "auto";
+            panel.style.overflow = "";
+            panel.style.transition = "";
+
+            clearServicePanelTransition(
+                panel
+            );
+        };
+
+
+        panel.addEventListener(
+            "transitionend",
+            panel._serviceAccordionEnd
+        );
+
+        panel._serviceAccordionTimer =
+            window.setTimeout(
+                () => {
+                    if (
+                        panel._serviceAccordionEnd
+                    ) {
+                        panel._serviceAccordionEnd({
+                            propertyName: "height"
+                        });
+                    }
+                },
+                560
+            );
+    }
+
+
+    function closeServiceItem(item) {
+        const trigger = qs(
+            ".service-accordion__trigger",
+            item
+        );
+
+        const panel = qs(
+            ".service-accordion__panel",
+            item
+        );
+
+
+        if (!trigger || !panel) {
+            return;
+        }
+
+
+        clearServicePanelTransition(panel);
+
+        item.classList.remove(
+            "is-active"
+        );
+
+        trigger.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        if (prefersReducedMotion) {
+            panel.hidden = true;
+            panel.style.height = "";
+            panel.style.overflow = "";
+            panel.style.transition = "";
+
+            return;
+        }
+
+
+        panel.hidden = false;
+
+        const currentHeight =
+            panel.getBoundingClientRect()
+                .height;
+
+
+        panel.style.height =
+            `${currentHeight}px`;
+
+        panel.style.overflow =
+            "hidden";
+
+        panel.style.transition =
+            "height 360ms " +
+            "cubic-bezier(0.4, 0, 0.2, 1)";
+
+
+        panel.getBoundingClientRect();
+
+
+        window.requestAnimationFrame(
+            () => {
+                panel.style.height =
+                    "0px";
+            }
+        );
+
+
+        panel._serviceAccordionEnd = (
+            event
+        ) => {
+            if (
+                event.propertyName !==
+                "height"
+            ) {
+                return;
+            }
+
+            panel.hidden = true;
+
+            panel.style.height = "";
+            panel.style.overflow = "";
+            panel.style.transition = "";
+
+            clearServicePanelTransition(
+                panel
+            );
+        };
+
+
+        panel.addEventListener(
+            "transitionend",
+            panel._serviceAccordionEnd
+        );
+
+        panel._serviceAccordionTimer =
+            window.setTimeout(
+                () => {
+                    if (
+                        panel._serviceAccordionEnd
+                    ) {
+                        panel._serviceAccordionEnd({
+                            propertyName: "height"
+                        });
+                    }
+                },
+                460
+            );
     }
 
 

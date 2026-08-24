@@ -455,8 +455,7 @@
 .legal-content {
     position: relative;
 
-    padding: clamp(68px, 6vw, 96px) 0
-             clamp(80px, 7vw, 116px);
+    padding: var(--section-space-y) 0;
 
     background: var(--color-off-white);
 
@@ -482,14 +481,16 @@
    ========================================================= */
 
 .legal-nav {
-    position: relative;
+    position: sticky;
+    top: calc(var(--header-height) + 28px);
+
+    align-self: start;
 
     min-width: 0;
 }
 
 .legal-nav__card {
-    position: sticky;
-    top: calc(var(--header-height) + 28px);
+    position: relative;
 
     overflow: hidden;
 
@@ -657,11 +658,11 @@
     scroll-margin-top:
         calc(var(--header-height) + 30px);
 
-    padding-bottom: 56px;
+    padding-bottom: var(--section-inner-gap);
 }
 
 .legal-section + .legal-section {
-    padding-top: 55px;
+    padding-top: var(--section-inner-gap);
 
     border-top:
         1px solid
@@ -1222,7 +1223,7 @@
    ========================================================= */
 
 .legal-next {
-    padding: 0 0 clamp(70px, 7vw, 110px);
+    padding: 0 0 var(--section-space-y);
 
     background: var(--color-off-white);
 }
@@ -1470,14 +1471,16 @@
     }
 
     .legal-nav__card {
-        position: relative;
-        top: auto;
-
         box-shadow:
             7px
             7px
             0
             var(--legal-accent);
+    }
+
+    .legal-nav {
+        position: relative;
+        top: auto;
     }
 
     .legal-nav nav {
@@ -1636,9 +1639,7 @@
     }
 
     .legal-content {
-        padding:
-            54px 0
-            72px;
+        padding: var(--section-space-y) 0;
     }
 
     .legal-layout {
@@ -1672,11 +1673,11 @@
     }
 
     .legal-section {
-        padding-bottom: 43px;
+        padding-bottom: var(--section-inner-gap);
     }
 
     .legal-section + .legal-section {
-        padding-top: 43px;
+        padding-top: var(--section-inner-gap);
     }
 
     .legal-section h2 {
@@ -1783,7 +1784,7 @@
     }
 
     .legal-next {
-        padding-bottom: 72px;
+        padding-bottom: var(--section-space-y);
     }
 
     .legal-next__shell {
