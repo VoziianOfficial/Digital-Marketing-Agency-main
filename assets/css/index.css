@@ -4281,6 +4281,26 @@ a.contact__detail:hover strong {
    ========================================================= */
 
 @media (max-width: 1180px) {
+    .trusted__title,
+    .experience__title,
+    .work-teaser__title,
+    .testimonials__content .section-title,
+    .contact__content .section-title {
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .trusted__content,
+    .trusted__text,
+    .experience__content,
+    .experience__text,
+    .work-teaser__content,
+    .work-teaser__text,
+    .testimonials__content,
+    .contact__content {
+        text-align: center;
+    }
+
     .hero__headline {
         top: 50%;
         width: min(100%, 920px);

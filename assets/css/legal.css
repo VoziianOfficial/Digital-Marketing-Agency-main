@@ -1439,11 +1439,20 @@
 
     .legal-hero__content {
         max-width: 760px;
+        margin-inline: auto;
+        text-align: center;
     }
 
     .legal-hero__title {
+        margin-inline: auto;
         font-size:
             clamp(70px, 12vw, 106px);
+        text-align: center;
+    }
+
+    .legal-hero__title-mask > span {
+        margin-inline: auto;
+        text-align: center;
     }
 
     .legal-hero__side {
@@ -1496,6 +1505,19 @@
         max-width: none;
     }
 
+    .legal-section,
+    .legal-contact,
+    .legal-next__shell {
+        text-align: center;
+    }
+
+    .legal-section h2,
+    .legal-contact h2,
+    .legal-next__shell h2 {
+        margin-inline: auto;
+        text-align: center;
+    }
+
     .legal-contact {
         grid-template-columns: 1fr;
 
@@ -1503,11 +1525,11 @@
     }
 
     .legal-contact__email {
-        align-items: flex-start;
+        align-items: center;
 
         min-width: 0;
 
-        text-align: left;
+        text-align: center;
     }
 
 }
@@ -1560,7 +1582,7 @@
 
     .legal-next__shell {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
 
         min-height: 0;
     }

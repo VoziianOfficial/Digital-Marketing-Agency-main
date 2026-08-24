@@ -2526,6 +2526,31 @@ html:not(.aos-ready) [data-aos] {
         scroll-padding-top: calc(var(--header-height) + 12px);
     }
 
+    main .section h1,
+    main .section h2,
+    .section-title {
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .section-heading,
+    .section-heading--split,
+    .section-heading--center {
+        justify-items: center;
+        text-align: center;
+    }
+
+    .section-heading--split > p,
+    .section-heading--center > p {
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .section-label {
+        justify-content: center;
+        margin-inline: auto;
+    }
+
     .site-header__shell {
         display: flex;
         align-items: center;
