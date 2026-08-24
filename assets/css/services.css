@@ -441,31 +441,6 @@
         var(--color-white);
 }
 
-.service-hero__stamp-ring {
-    position: absolute;
-    inset: 12px;
-
-    display: grid;
-    place-items: center;
-
-    border:
-        1px solid
-        rgba(0, 0, 0, 0.32);
-    border-radius: 50%;
-
-    font-family: var(--font-accent);
-    font-size: 7px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-align: center;
-
-    animation:
-        serviceStampRotate
-        15s
-        linear
-        infinite;
-}
-
 .service-hero__stamp strong {
     position: relative;
     z-index: 2;
@@ -474,12 +449,6 @@
     font-size: 26px;
     font-weight: 800;
     letter-spacing: -0.06em;
-}
-
-@keyframes serviceStampRotate {
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .service-hero__signal {
@@ -5506,12 +5475,6 @@
         height: 96px;
     }
 
-    .service-hero__stamp-ring {
-        inset: 9px;
-
-        font-size: 6px;
-    }
-
     .service-hero__signal,
     .seo-hero-query,
     .performance-hero-board {
@@ -6119,10 +6082,6 @@
     .service-hero__stamp {
         width: 72px;
         height: 72px;
-    }
-
-    .service-hero__stamp-ring {
-        display: none;
     }
 
     .service-hero__stamp strong {
@@ -6760,10 +6719,6 @@
         opacity: 1;
         transform: none;
 
-        animation: none !important;
-    }
-
-    .service-hero__stamp-ring {
         animation: none !important;
     }
 
