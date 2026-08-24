@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initCookieCard();
     initBackToTop();
     initWorkTeaserReveal();
+    initSyncPanels();
     initContactForms();
     initAOS();
 });
@@ -1411,6 +1412,226 @@ function initWorkTeaserReveal() {
 
 
     observer.observe(grid);
+}
+
+
+/* =========================================================
+   SYNC PANEL
+   Swiper on the left, accordion on the right, kept in
+   sync both ways: dragging the slider opens the matching
+   accordion item, clicking an item drives the slider.
+   ========================================================= */
+
+function initSyncPanels() {
+    const panels = $$("[data-sync-panel]");
+
+    if (
+        !panels.length ||
+        typeof window.Swiper === "undefined"
+    ) {
+        return;
+    }
+
+
+    panels.forEach((panel) => {
+        const swiperEl = $(
+            "[data-sync-swiper]",
+            panel
+        );
+
+        const items = $$(
+            "[data-sync-item]",
+            panel
+        );
+
+        if (
+            !swiperEl ||
+            !items.length
+        ) {
+            return;
+        }
+
+
+        const slideLabels = $$(
+            ".sync-panel-slide",
+            swiperEl
+        ).map(
+            (slide) => slide.dataset.slideLabel || ""
+        );
+
+
+        /*
+         * Swiper's loop mode needs more real slides than a
+         * short 3-4 item panel provides, or it disables
+         * itself (with a console warning) at the wrap
+         * boundary. Swiper's own fix is to duplicate slides,
+         * so we clone the set once and map the doubled
+         * realIndex back with % items.length below.
+         */
+
+        const wrapperEl = $(
+            ".swiper-wrapper",
+            swiperEl
+        );
+
+        if (
+            wrapperEl &&
+            items.length < 6
+        ) {
+            $$(".sync-panel-slide", swiperEl).forEach((slide) => {
+                wrapperEl.appendChild(slide.cloneNode(true));
+            });
+        }
+
+
+        const labelEl = $(
+            "[data-sync-label]",
+            panel
+        );
+
+        const currentEl = $(
+            "[data-sync-current]",
+            panel
+        );
+
+        const totalEl = $(
+            "[data-sync-total]",
+            panel
+        );
+
+        const progressEl = $(
+            "[data-sync-progress]",
+            panel
+        );
+
+        const prevBtn = $(
+            "[data-sync-prev]",
+            panel
+        );
+
+        const nextBtn = $(
+            "[data-sync-next]",
+            panel
+        );
+
+
+        if (totalEl) {
+            totalEl.textContent =
+                String(items.length).padStart(2, "0");
+        }
+
+
+        const setActive = (rawIndex) => {
+            const index = rawIndex % items.length;
+
+            items.forEach((item, i) => {
+                const isOpen = i === index;
+
+                item.classList.toggle(
+                    "is-open",
+                    isOpen
+                );
+
+                const trigger = $(
+                    ".sync-panel-item__trigger",
+                    item
+                );
+
+                if (trigger) {
+                    trigger.setAttribute(
+                        "aria-expanded",
+                        isOpen ? "true" : "false"
+                    );
+                }
+            });
+
+            if (currentEl) {
+                currentEl.textContent =
+                    String(index + 1).padStart(2, "0");
+            }
+
+            if (
+                labelEl &&
+                slideLabels[index]
+            ) {
+                labelEl.textContent =
+                    slideLabels[index];
+            }
+        };
+
+
+        const swiper = new window.Swiper(
+            swiperEl,
+            {
+                loop: true,
+                loopAdditionalSlides: 2,
+
+                slidesPerView: 1,
+                spaceBetween: 20,
+
+                speed:
+                    reducedMotion.matches
+                        ? 0
+                        : 620,
+
+                grabCursor:
+                    finePointer.matches,
+
+                watchOverflow: false,
+
+                autoplay:
+                    reducedMotion.matches
+                        ? false
+                        : {
+                            delay: 5400,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true
+                        },
+
+                navigation: {
+                    prevEl: prevBtn,
+                    nextEl: nextBtn
+                },
+
+                pagination: progressEl
+                    ? {
+                        el: progressEl,
+                        type: "progressbar"
+                    }
+                    : undefined,
+
+                on: {
+                    slideChange(activeSwiper) {
+                        setActive(
+                            activeSwiper.realIndex
+                        );
+                    }
+                }
+            }
+        );
+
+
+        setActive(swiper.realIndex);
+
+
+        items.forEach((item, i) => {
+            const trigger = $(
+                ".sync-panel-item__trigger",
+                item
+            );
+
+            if (!trigger) {
+                return;
+            }
+
+            trigger.addEventListener(
+                "click",
+                () => {
+                    swiper.slideToLoop(i);
+                }
+            );
+        });
+    });
 }
 
 
