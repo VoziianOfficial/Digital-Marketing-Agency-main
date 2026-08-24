@@ -37,6 +37,7 @@
         initRelatedServicesSlider();
 
         initServiceAccordion();
+        initServiceHighlights();
 
         initHeroPatternParallax();
         initMediaParallax();
@@ -620,6 +621,222 @@
             "transitionend",
             finishClose
         );
+    }
+
+
+    /* =====================================================
+       SERVICE HIGHLIGHTS
+       Large photo + 4 cards + stage list, all driven
+       from the same data attributes on each list item.
+       ===================================================== */
+
+    function initServiceHighlights() {
+        const sections = qsa(
+            "[data-highlights]"
+        );
+
+
+        if (!sections.length) {
+            return;
+        }
+
+
+        sections.forEach((section) => {
+
+            const items = qsa(
+                "[data-highlights-item]",
+                section
+            );
+
+            const cards = qsa(
+                "[data-highlights-card]",
+                section
+            );
+
+            const photo = qs(
+                "[data-highlights-photo]",
+                section
+            );
+
+            const img = qs(
+                "[data-highlights-img]",
+                section
+            );
+
+            const caption = qs(
+                "[data-highlights-caption]",
+                section
+            );
+
+            const indexEl = qs(
+                "[data-highlights-index]",
+                section
+            );
+
+            const headingEl = qs(
+                "[data-highlights-heading]",
+                section
+            );
+
+            const descEl = qs(
+                "[data-highlights-desc]",
+                section
+            );
+
+
+            if (
+                !items.length ||
+                !photo ||
+                !img
+            ) {
+                return;
+            }
+
+
+            let activeIndex = -1;
+            let swapTimer = null;
+
+
+            const applyContent = (target, index) => {
+
+                img.src = target.dataset.image;
+                img.alt = target.dataset.heading || "";
+
+                if (indexEl) {
+                    indexEl.textContent =
+                        String(index + 1).padStart(2, "0");
+                }
+
+                if (headingEl) {
+                    headingEl.textContent =
+                        target.dataset.heading || "";
+                }
+
+                if (descEl) {
+                    descEl.textContent =
+                        target.dataset.desc || "";
+                }
+
+            };
+
+
+            const setActive = (index) => {
+
+                const target = items[index];
+
+                if (
+                    !target ||
+                    index === activeIndex
+                ) {
+                    return;
+                }
+
+                activeIndex = index;
+
+
+                items.forEach((item, i) => {
+
+                    const isActive = i === index;
+
+                    item.classList.toggle(
+                        "is-active",
+                        isActive
+                    );
+
+                    item.setAttribute(
+                        "aria-current",
+                        isActive
+                            ? "true"
+                            : "false"
+                    );
+
+                });
+
+
+                cards.forEach((card) => {
+
+                    card.classList.toggle(
+                        "is-active",
+                        Number(card.dataset.index) === index
+                    );
+
+                });
+
+
+                clearTimeout(swapTimer);
+
+
+                if (reducedMotion) {
+                    applyContent(target, index);
+                    return;
+                }
+
+
+                photo.classList.add("is-swapping");
+
+                if (caption) {
+                    caption.classList.add("is-swapping");
+                }
+
+
+                swapTimer = setTimeout(() => {
+
+                    applyContent(target, index);
+
+                    photo.classList.remove("is-swapping");
+
+                    if (caption) {
+                        caption.classList.remove("is-swapping");
+                    }
+
+                }, 260);
+
+            };
+
+
+            items.forEach((item, i) => {
+
+                item.addEventListener(
+                    "click",
+                    () => setActive(i)
+                );
+
+            });
+
+
+            cards.forEach((card) => {
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        const index = Number(
+                            card.dataset.index
+                        );
+
+                        if (!Number.isNaN(index)) {
+                            setActive(index);
+                        }
+
+                    }
+                );
+
+            });
+
+
+            const startIndex = items.findIndex((item) =>
+                item.classList.contains("is-active")
+            );
+
+            activeIndex = -1;
+
+            setActive(
+                startIndex === -1
+                    ? 0
+                    : startIndex
+            );
+
+        });
     }
 
 

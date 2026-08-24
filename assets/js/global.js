@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initSectionDock();
     initCookieCard();
     initBackToTop();
+    initWorkTeaserReveal();
     initContactForms();
     initAOS();
 });
@@ -1358,6 +1359,58 @@ function initBackToTop() {
 
 
     updateVisibility();
+}
+
+
+/* =========================================================
+   FEATURED WORK REVEAL
+   Photos fade/clip/scale in one by one, once, the first
+   time the grid enters the viewport.
+   ========================================================= */
+
+function initWorkTeaserReveal() {
+    const grid = $("[data-work-teaser-grid]");
+
+    if (!grid) {
+        return;
+    }
+
+    const photos = $$(".work-teaser__photo", grid);
+
+    if (!photos.length) {
+        return;
+    }
+
+
+    if (
+        reducedMotion.matches ||
+        !("IntersectionObserver" in window)
+    ) {
+        grid.classList.add("is-revealed");
+        return;
+    }
+
+
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                grid.classList.add("is-revealed");
+                obs.unobserve(entry.target);
+            });
+        },
+        {
+            root: null,
+            threshold: 0.2,
+            rootMargin: "0px 0px -10% 0px"
+        }
+    );
+
+
+    observer.observe(grid);
 }
 
 
