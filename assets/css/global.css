@@ -41,6 +41,9 @@
     --header-bottom-height: 73px;
     --header-height: 116px;
 
+    --section-dock-left: 26px;
+    --section-dock-width: 58px;
+
     --radius-xs: 8px;
     --radius-sm: 14px;
     --radius-md: 22px;
@@ -1489,7 +1492,7 @@ a.burger-panel__contact-item:hover {
 .section-dock {
     position: fixed;
     top: 50%;
-    left: 26px;
+    left: var(--section-dock-left);
     z-index: 800;
 
     display: flex;
@@ -1497,7 +1500,7 @@ a.burger-panel__contact-item:hover {
     align-items: center;
     gap: 4px;
 
-    width: 58px;
+    width: var(--section-dock-width);
     padding: 12px 7px;
 
     color: var(--color-gray-500);
@@ -2121,11 +2124,12 @@ html:not(.aos-ready) [data-aos] {
    ========================================================= */
 
 @media (min-width: 1600px) {
-    .section-dock {
-        left: max(
-            26px,
-            calc((100vw - var(--container-width)) / 2 - 88px)
-        );
+    :root {
+        --section-dock-left:
+            max(
+                26px,
+                calc((100vw - var(--container-width)) / 2 - 88px)
+            );
     }
 }
 
@@ -2137,6 +2141,7 @@ html:not(.aos-ready) [data-aos] {
 @media (max-width: 1360px) {
     :root {
         --container-gap: 26px;
+        --section-dock-left: 16px;
     }
 
     .site-header__shell {
@@ -2159,9 +2164,6 @@ html:not(.aos-ready) [data-aos] {
         display: none;
     }
 
-    .section-dock {
-        left: 16px;
-    }
 }
 
 

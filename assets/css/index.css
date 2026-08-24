@@ -27,7 +27,6 @@
 
 .hero {
     position: relative;
-    isolation: isolate;
 
     display: flex;
     flex-direction: column;
@@ -173,9 +172,14 @@
    ========================================================= */
 
 .hero__scroll-cue {
-    position: absolute;
-    top: clamp(58px, 7vh, 92px);
-    left: 0;
+    position: fixed;
+    top: calc(50% - 290px);
+    left:
+        calc(
+            var(--section-dock-left) +
+            ((var(--section-dock-width) - 50px) / 2)
+        );
+    z-index: 900;
 
     width: 50px;
 
