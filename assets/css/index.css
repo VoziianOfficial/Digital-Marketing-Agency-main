@@ -220,7 +220,7 @@
     top: 50%;
     left: 50%;
 
-    width: min(100%, 1180px);
+    width: min(100%, 1140px);
 
     transform: translate(-50%, -50%);
 
@@ -241,10 +241,11 @@
     width: 100%;
 
     font-family: var(--font-primary);
-    font-size: clamp(76px, 8.9vw, 142px);
+    font-size: clamp(70px, 7.9vw, 124px);
     font-weight: 800;
-    line-height: 0.9;
+    line-height: 0.86;
     letter-spacing: 0;
+    white-space: nowrap;
     text-transform: uppercase;
 
     transform: translateY(115%);
@@ -266,7 +267,7 @@
     -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.82);
     text-stroke: 1.5px rgba(255, 255, 255, 0.82);
 
-    font-size: clamp(92px, 11.8vw, 182px);
+    font-size: clamp(84px, 10.25vw, 156px);
 
     animation:
         heroTextReveal 1.05s 0.57s forwards
@@ -527,7 +528,7 @@
 
 .hero__copy {
     position: absolute;
-    top: calc(50% + clamp(118px, 12vw, 164px));
+    top: calc(50% + clamp(102px, 10.5vw, 142px));
     left: 50%;
     z-index: 6;
 
@@ -535,9 +536,9 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 
-    width: min(100%, 560px);
+    width: min(100%, 540px);
 
     opacity: 0;
 
@@ -551,15 +552,15 @@
     flex: 0 1 auto;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 
-    min-height: 52px;
-    padding: 0 22px;
+    min-height: 50px;
+    padding: 0 20px;
 
     color: var(--color-white);
 
     font-family: var(--font-primary);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
 
@@ -574,8 +575,8 @@
 }
 
 .hero__cta svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
 
     color: var(--color-orange);
 
@@ -2915,12 +2916,16 @@ a.contact__detail:hover strong {
    ========================================================= */
 
 @media (max-width: 1360px) {
+    .hero__headline {
+        width: min(100%, 1060px);
+    }
+
     .hero__headline-line {
-        font-size: clamp(72px, 8.5vw, 124px);
+        font-size: clamp(66px, 7.7vw, 110px);
     }
 
     .hero__headline-line--outline {
-        font-size: clamp(88px, 11.4vw, 160px);
+        font-size: clamp(80px, 10.2vw, 138px);
     }
 
     .hero__preview {
@@ -2955,14 +2960,15 @@ a.contact__detail:hover strong {
 @media (max-width: 1180px) {
     .hero__headline {
         top: 50%;
+        width: min(100%, 920px);
     }
 
     .hero__headline-line {
-        font-size: clamp(66px, 8.8vw, 106px);
+        font-size: clamp(60px, 7.8vw, 92px);
     }
 
     .hero__headline-line--outline {
-        font-size: clamp(82px, 11.5vw, 134px);
+        font-size: clamp(72px, 10.1vw, 116px);
     }
 
     .hero__preview {
@@ -2970,7 +2976,7 @@ a.contact__detail:hover strong {
     }
 
     .hero__copy {
-        width: min(100%, 520px);
+        width: min(100%, 500px);
     }
 
     .about__layout,
@@ -3079,17 +3085,17 @@ a.contact__detail:hover strong {
     }
 
     .hero__headline-line {
-        font-size: clamp(58px, 9.8vw, 92px);
+        font-size: clamp(56px, 9.4vw, 86px);
     }
 
     .hero__headline-line--outline {
-        font-size: clamp(74px, 12.2vw, 116px);
+        font-size: clamp(70px, 11.6vw, 108px);
     }
 
     .hero__copy {
-        top: calc(49% + clamp(100px, 15vw, 138px));
+        top: calc(49% + clamp(92px, 14vw, 126px));
 
-        width: min(100%, 500px);
+        width: min(100%, 480px);
     }
 
     .hero-marquee__group {
@@ -3267,14 +3273,15 @@ a.contact__detail:hover strong {
     .hero__headline-line {
         font-size: clamp(50px, 11.4vw, 76px);
         line-height: 0.92;
+        white-space: normal;
     }
 
     .hero__headline-line--outline {
-        font-size: clamp(66px, 14.7vw, 98px);
+        font-size: clamp(64px, 14vw, 92px);
     }
 
     .hero__copy {
-        top: calc(47% + clamp(90px, 18vw, 122px));
+        top: calc(47% + clamp(84px, 17vw, 112px));
         left: 50%;
 
         width: min(100%, 430px);
@@ -3386,13 +3393,13 @@ a.contact__detail:hover strong {
     }
 
     .hero__headline-line--outline {
-        font-size: clamp(56px, 17vw, 84px);
+        font-size: clamp(54px, 16vw, 78px);
 
         -webkit-text-stroke-width: 1px;
     }
 
     .hero__copy {
-        top: calc(45% + clamp(86px, 24vw, 118px));
+        top: calc(45% + clamp(80px, 22vw, 108px));
 
         width: min(100%, 340px);
     }
@@ -3715,15 +3722,15 @@ a.contact__detail:hover strong {
     }
 
     .hero__headline-line {
-        font-size: clamp(38px, 12.8vw, 52px);
+        font-size: clamp(36px, 12.2vw, 48px);
     }
 
     .hero__headline-line--outline {
-        font-size: clamp(50px, 16vw, 68px);
+        font-size: clamp(48px, 15vw, 62px);
     }
 
     .hero__copy {
-        top: calc(44% + 90px);
+        top: calc(44% + 82px);
 
         width: min(100%, 300px);
     }
