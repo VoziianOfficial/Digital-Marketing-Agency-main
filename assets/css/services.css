@@ -6190,9 +6190,16 @@
         animation: none !important;
     }
 
-    .service-hero__stamp-ring,
-    .service-marquee__track {
+    .service-hero__stamp-ring {
         animation: none !important;
+    }
+
+    .service-marquee__track {
+        animation:
+            serviceMarquee
+            26s
+            linear
+            infinite !important;
     }
 
 }

@@ -650,10 +650,6 @@
     animation: heroMarquee 32s linear infinite;
 }
 
-.hero-marquee:hover .hero-marquee__track {
-    animation-play-state: paused;
-}
-
 .hero-marquee__group {
     display: flex;
     align-items: center;
@@ -3572,12 +3568,15 @@ a.contact__detail:hover strong {
     }
 
     .hero-play__text,
-    .faq__circle,
-    .hero-marquee__track {
+    .faq__circle {
         animation: none !important;
     }
 
     .hero-marquee__track {
-        transform: none;
+        animation:
+            heroMarquee
+            32s
+            linear
+            infinite !important;
     }
 }
