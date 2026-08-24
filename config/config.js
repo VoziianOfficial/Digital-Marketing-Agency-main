@@ -1,19 +1,19 @@
 window.SITE_CONFIG = Object.freeze({
-    brandName: "NEXORA",
-    brandTagline: "DIGITAL AGENCY",
+    brandName: "LLC Advantshield",
+    brandTagline: "California Contractor License #932946 — B, General Building Contractor",
 
     logo: "assets/icons/logo.svg",
     favicon: "assets/icons/favicon.svg",
 
-    email: "hello@nexora-agency.com",
-    address: "48 Mercer Street, London, UK",
+    email: "hello@advantshield.com",
+    address: "California Contractor License #932946 — B, General Building Contractor",
 
-    browserTitle: "NEXORA | Digital Marketing Agency",
+    browserTitle: "LLC Advantshield | California Contractor License #932946 — B, General Building Contractor",
 
     formEndpoint: "contact.php",
 
     disclaimer:
-        "NEXORA is an independent digital marketing agency. Services, project scope, timelines and deliverables may vary depending on individual business requirements and agreed project terms.",
+        "LLC Advantshield holds California Contractor License #932946 — B, General Building Contractor.",
 
     cookieNotice:
         "We use essential cookies to improve site functionality and understand how visitors interact with our website.",
@@ -97,48 +97,48 @@ window.SITE_CONFIG = Object.freeze({
 
     pages: {
         home: {
-            title: "NEXORA | Digital Marketing Agency"
+            title: "LLC Advantshield | California Contractor License #932946 — B, General Building Contractor"
         },
 
         digitalStrategy: {
-            title: "Digital Strategy | NEXORA"
+            title: "Digital Strategy | LLC Advantshield"
         },
 
         seoMarketing: {
-            title: "SEO Marketing | NEXORA"
+            title: "SEO Marketing | LLC Advantshield"
         },
 
         performanceMarketing: {
-            title: "Performance Marketing | NEXORA"
+            title: "Performance Marketing | LLC Advantshield"
         },
 
         socialMediaMarketing: {
-            title: "Social Media Marketing | NEXORA"
+            title: "Social Media Marketing | LLC Advantshield"
         },
 
         contentMarketing: {
-            title: "Content Marketing | NEXORA"
+            title: "Content Marketing | LLC Advantshield"
         },
 
         webDesign: {
-            title: "Web Design & Development | NEXORA"
+            title: "Web Design & Development | LLC Advantshield"
         },
 
         privacy: {
-            title: "Privacy Policy | NEXORA"
+            title: "Privacy Policy | LLC Advantshield"
         },
 
         terms: {
-            title: "Terms | NEXORA"
+            title: "Terms | LLC Advantshield"
         },
 
         cookies: {
-            title: "Cookies | NEXORA"
+            title: "Cookies | LLC Advantshield"
         }
     },
 
     footer: {
-        copyrightName: "NEXORA",
+        copyrightName: "LLC Advantshield",
         description:
             "Strategy, creativity and performance combined to build stronger digital brands."
     },

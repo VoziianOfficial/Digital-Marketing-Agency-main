@@ -1,5 +1,5 @@
 /* =========================================================
-   NEXORA — GLOBAL
+   LLC Advantshield — GLOBAL
    ========================================================= */
 
 
@@ -534,22 +534,23 @@ main {
 }
 
 .site-header__brand-name {
-    overflow: hidden;
-
     color: var(--color-white);
 
     font-family: var(--font-primary);
-    font-size: 25px;
+    font-size: clamp(18px, 1.35vw, 22px);
     font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.04em;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .site-header__brand-tagline {
     margin-top: 6px;
+
+    display: block;
+    max-width: 170px;
+    overflow: hidden;
 
     color: var(--color-gray-400);
 
@@ -557,7 +558,10 @@ main {
     font-size: 9px;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.08em;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -1735,6 +1739,7 @@ a.burger-panel__contact-item:hover {
 .site-footer__brand > span {
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .site-footer__brand strong {
@@ -1748,12 +1753,15 @@ a.burger-panel__contact-item:hover {
 .site-footer__brand small {
     margin-top: 6px;
 
+    max-width: 420px;
+
     color: var(--color-gray-500);
 
     font-family: var(--font-accent);
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.17em;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
 }
 
 .site-footer__description {
@@ -2487,7 +2495,7 @@ html:not(.aos-ready) [data-aos] {
     }
 
     .site-header__brand-name {
-        font-size: 22px;
+        font-size: 19px;
     }
 
     .site-nav__list {
@@ -2544,7 +2552,7 @@ html:not(.aos-ready) [data-aos] {
     }
 
     .site-header__brand-name {
-        font-size: 21px;
+        font-size: 19px;
     }
 
     .site-header__content {

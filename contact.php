@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /* =========================================================
-   NEXORA — CONTACT FORM HANDLER
+   LLC Advantshield — CONTACT FORM HANDLER
    contact.php
    ========================================================= */
 
@@ -145,7 +145,7 @@ function getRecipientEmail(): string
      * Emergency fallback only.
      */
 
-    return 'hello@nexora-agency.com';
+    return 'hello@advantshield.com';
 }
 
 
@@ -347,7 +347,7 @@ $subjectService =
 
 
 $subject =
-    'NEXORA Website Enquiry — ' .
+    'LLC Advantshield Website Enquiry — ' .
     $subjectService;
 
 
@@ -463,7 +463,7 @@ $headers[] =
     'Content-Transfer-Encoding: 8bit';
 
 $headers[] =
-    'From: NEXORA Website <' .
+    'From: LLC Advantshield Website <' .
     $senderEmail .
     '>';
 

@@ -1,5 +1,5 @@
 /* =========================================================
-   NEXORA — GLOBAL
+   LLC Advantshield — GLOBAL
    assets/js/global.js
    ========================================================= */
 
@@ -206,7 +206,7 @@ function applySiteConfig() {
     /* Current year */
 
     $$("[data-current-year]").forEach((element) => {
-        element.textContent = String(new Date().getFullYear());
+        element.textContent = "2026";
     });
 }
 
@@ -1268,7 +1268,7 @@ function initCookieCard() {
     }
 
 
-    const storageKey = "nexora-cookie-consent-v1";
+    const storageKey = "advantshield-cookie-consent-v1";
 
 
     let accepted = false;

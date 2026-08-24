@@ -2,7 +2,7 @@
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 64 64"
     role="img"
-    aria-label="NEXORA favicon"
+    aria-label="LLC Advantshield favicon"
 >
     <rect
         width="64"
@@ -12,7 +12,7 @@
     />
 
     <path
-        d="M18 44V20L46 44V20"
+        d="M18 44L32 20L46 44M23.5 35H40.5"
         fill="none"
         stroke="#FFFFFF"
         stroke-width="6"
@@ -21,7 +21,7 @@
     />
 
     <path
-        d="M18 20L46 44"
+        d="M32 20L46 44"
         fill="none"
         stroke="#FF5C00"
         stroke-width="2.5"
@@ -29,7 +29,7 @@
     />
 
     <circle
-        cx="18"
+        cx="32"
         cy="20"
         r="3.5"
         fill="#FFD900"
