@@ -42,6 +42,9 @@
         initFaqAccordion();
         initMediaParallax();
 
+        initTrustedTabs();
+        initTrustedStats();
+
         refreshLayoutAfterLoad();
     });
 
@@ -1178,6 +1181,187 @@
 
 
         update();
+    }
+
+
+    /* =====================================================
+       TRUSTED TABS
+       ===================================================== */
+
+    function initTrustedTabs() {
+        const tabsWrap = qs(
+            "[data-trusted-tabs]"
+        );
+
+        if (!tabsWrap) {
+            return;
+        }
+
+        const tabs = qsa(
+            "[data-trusted-tab]",
+            tabsWrap
+        );
+
+        const panes = qsa(
+            "[data-trusted-pane]"
+        );
+
+        if (
+            !tabs.length ||
+            !panes.length
+        ) {
+            return;
+        }
+
+
+        tabs.forEach((tab) => {
+            tab.addEventListener(
+                "click",
+                () => {
+                    if (
+                        tab.classList.contains(
+                            "is-active"
+                        )
+                    ) {
+                        return;
+                    }
+
+                    const target =
+                        tab.dataset.trustedTab;
+
+                    tabs.forEach(
+                        (otherTab) => {
+                            const active =
+                                otherTab === tab;
+
+                            otherTab.classList.toggle(
+                                "is-active",
+                                active
+                            );
+
+                            otherTab.setAttribute(
+                                "aria-selected",
+                                active
+                                    ? "true"
+                                    : "false"
+                            );
+                        }
+                    );
+
+                    panes.forEach(
+                        (pane) => {
+                            const active =
+                                pane.dataset.trustedPane ===
+                                target;
+
+                            pane.classList.toggle(
+                                "is-active",
+                                active
+                            );
+
+                            pane.hidden = !active;
+                        }
+                    );
+                }
+            );
+        });
+    }
+
+
+    /* =====================================================
+       TRUSTED STATS COUNT-UP
+       ===================================================== */
+
+    function initTrustedStats() {
+        const values = qsa(
+            "[data-count-to]"
+        );
+
+        if (!values.length) {
+            return;
+        }
+
+
+        const animateValue = (element) => {
+            const target = Number(
+                element.dataset.countTo
+            );
+
+            if (
+                !Number.isFinite(target) ||
+                element.dataset.counted === "true"
+            ) {
+                return;
+            }
+
+            element.dataset.counted = "true";
+
+
+            if (prefersReducedMotion) {
+                element.textContent =
+                    target.toLocaleString("en-US");
+
+                return;
+            }
+
+
+            const duration = 1400;
+            const startTime = performance.now();
+
+
+            const step = (now) => {
+                const progress = Math.min(
+                    1,
+                    (now - startTime) / duration
+                );
+
+                const eased =
+                    1 - Math.pow(1 - progress, 3);
+
+                const current = Math.round(
+                    target * eased
+                );
+
+                element.textContent =
+                    current.toLocaleString("en-US");
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+
+            window.requestAnimationFrame(step);
+        };
+
+
+        if (!("IntersectionObserver" in window)) {
+            values.forEach(animateValue);
+
+            return;
+        }
+
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        animateValue(entry.target);
+
+                        observer.unobserve(
+                            entry.target
+                        );
+                    }
+                });
+            },
+            {
+                threshold: 0.6
+            }
+        );
+
+
+        values.forEach((value) => {
+            observer.observe(value);
+        });
     }
 
 
